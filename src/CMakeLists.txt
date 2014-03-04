@@ -113,6 +113,12 @@ IF(WANT_PLAYER)
         ${wildmidi_executable_SRCS}
     )
 
+    IF(AUDIODRV_ALSA)
+        TARGET_INCLUDE_DIRECTORIES(wildmidi PRIVATE
+        ${ALSA_INCLUDE_DIR}
+        )
+    ENDIF(AUDIODRV_ALSA)
+
     ADD_DEPENDENCIES(wildmidi wildmidi_static wildmidi_dynamic)
 
     TARGET_LINK_LIBRARIES(wildmidi
